@@ -41,10 +41,112 @@
 }
 
 .button_exit {
-    -fx-background-image: url("../icon/button_cancel.png");
-    -fx-background-size: 24 24;
+     -fx-background-image: url("../icon/button_cancel.png");
+     -fx-background-size: 24 24;
+     -fx-background-repeat: no-repeat;
+     -fx-background-position:25
+ }
+
+.button_play {
+    -fx-background-image: url("../icon/button-play_256x256.png");
+    -fx-background-size: 50 50;
     -fx-background-repeat: no-repeat;
-    -fx-background-position:25
+    -fx-background-position:center
+}
+
+.button_pause {
+    -fx-background-image: url("../icon/button-pause_256x256.png");
+    -fx-background-size: 50 50;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position:center;
+}
+
+.root {
+    /***************************************************************************
+     *                                                                         *
+     * The main color palette from which the rest of the colors are derived.   *
+     *                                                                         *
+     **************************************************************************/
+
+    /* A light grey that is the base color for objects.  Instead of using
+     * -fx-base directly, the sections in this file will typically use -fx-color.
+     */
+    -fx-base: #d0d0d0;
+
+    /* A very light grey used for the background of windows.  See also
+     * -fx-text-background-color, which should be used as the -fx-text-fill
+     * value for text painted on top of backgrounds colored with -fx-background.
+     */
+    -fx-background: #f4f4f4;
+
+    /* Used for the inside of text boxes, password boxes, lists, trees, and
+     * tables.  See also -fx-text-inner-color, which should be used as the
+     * -fx-text-fill value for text painted on top of backgrounds colored
+     * with -fx-control-inner-background.
+     */
+    -fx-control-inner-background: white;
+
+    /* One of these colors will be chosen based upon a ladder calculation
+     * that uses the brightness of a background color.  Instead of using these
+     * colors directly as -fx-text-fill values, the sections in this file should
+     * use a derived color to match the background in use.  See also:
+     *
+     * -fx-text-base-color for text on top of -fx-base, -fx-color, and -fx-body-color
+     * -fx-text-background-color for text on top of -fx-background
+     * -fx-text-inner-color for text on top of -fx-control-inner-color
+     * -fx-selection-bar-text for text on top of -fx-selection-bar
+     */
+    -fx-dark-text-color: black;
+    -fx-mid-text-color: #292929;
+    -fx-light-text-color: white;
+
+    /* A bright blue for highlighting/accenting objects.  For example: selected
+     * text; selected items in menus, lists, trees, and tables; progress bars;
+     * default buttons.
+     */
+    -fx-accent: #0093ff;
+
+    /* A bright blue for the focus indicator of objects. Typically used as the
+     * first color in -fx-background-color for the "focused" pseudo-class. Also
+     * typically used with insets of -1.4 to provide a glowing effect.
+     *
+     * TODO: should this be derived from -fx-accent?
+     */
+    -fx-focus-color: #0093ff;
+
+    /* The color that is used in styling controls. The default value is based
+     * on -fx-base, but is changed by pseudoclasses to change the base color.
+     * For example, the "hover" pseudoclass will typically set -fx-color to
+     * -fx-hover-base (see below) and the "armed" pseudoclass will typically
+     * set -fx-color to -fx-pressed-base.
+     */
+    -fx-color: -fx-base;
+
+    /* The opacity level to use for the "disabled" pseudoclass.
+     */
+    -fx-disabled-opacity: 0.4;
+}
+
+.button_pause:disabled, .button_pause:disabled > * {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-opacity: -fx-disabled-opacity;
+}
+
+.button_play:disabled, .button_play:disabled > * {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-padding: 0.166667em 0.833333em 0.25em 0.833333em; /* 2 10 3 10 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+    -fx-opacity: -fx-disabled-opacity;
 }
 
 .jfx-tab-pane .tab:selected {
@@ -56,6 +158,7 @@
 }
 
 .jfx-tab-pane .tab-label {
+    -fx-text-fill: #9e9c9e;
     -fx-text-fill: #000;
     -fx-font-weight: normal; /* And this,
                                 are both used in style,

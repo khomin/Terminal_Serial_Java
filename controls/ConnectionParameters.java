@@ -27,8 +27,7 @@ public class ConnectionParameters {
     @FXML
     public Button buttonExit;
 
-    private SerialPort comPort = null;
-    private boolean portSelectAccepted = false;
+    private boolean portIsSelected = false;
 
     @FXML
     public void initialize() {
@@ -65,47 +64,10 @@ public class ConnectionParameters {
         });
     }
 
-    public boolean openPort() {
-        boolean res = false;
-        try {
-            if(comPortHeader.getText().isEmpty()) { //-- если в настройках нет порта
-                return false;
-            }
-            comPort = new SerialPort(comPortList.getSelectionModel().getSelectedItem().toString());
-            res = comPort.openPort();
-            comPort.setParams(Integer.parseInt(comPortBaudrate.getSelectionModel().getSelectedItem().toString()),
-                        SerialPort.DATABITS_8,
-                        SerialPort.STOPBITS_1,
-                        SerialPort.PARITY_NONE);
-            } catch (
-                SerialPortException ex) {
-                System.err.print(ex.getMessage());
-                Stage stage = (Stage)buttonAccept.getScene().getWindow();
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.initModality(Modality.APPLICATION_MODAL);
-                alert.setTitle("Warning");
-                alert.setContentText("Port busy");
-                alert.show();
-        }
-        return res;
-    }
-
-    public void closePort()  {
-        try {
-            if(comPort != null) {
-                if(comPort.isOpened()) {
-                    comPort.closePort();
-                }
-            }
-        } catch (SerialPortException ex) {
-
-        }
-    }
-
     public void onAccept() {
         Stage stage;
         //TODO: save config xml
-        portSelectAccepted = true;
+        portIsSelected = true;
         stage = (Stage)buttonAccept.getScene().getWindow();
         stage.close();
     }
@@ -113,23 +75,27 @@ public class ConnectionParameters {
     public void onExit() {
         Stage stage;
         stage = (Stage)buttonExit.getScene().getWindow();
-        portSelectAccepted = false;
+        portIsSelected = false;
         stage.close();
     }
 
-    public String getConnectionHeader() {
-        return comPortHeader.getText().toString();
-    }
-
-    public void setConnectionHeader(String header) {
-        comPortHeader.setText(header);
-    }
-
-    public String getConnectionPortName() {
+    public String getParamPortName() {
         return comPortList.getSelectionModel().getSelectedItem().toString();
     }
 
+    public int getParamPortStopBit() {
+        return Integer.parseInt(comPortStopBit.getSelectionModel().getSelectedItem().toString());
+    }
+
+    public int getParamPortParity() {
+        return comPortParity.getSelectionModel().getSelectedIndex();
+    }
+
+    public int getParamPortBaudrate() {
+        return Integer.parseInt(comPortBaudrate.getSelectionModel().getSelectedItem().toString());
+    }
+
     public boolean getPortIsSelected() {
-        return portSelectAccepted;
+        return portIsSelected;
     }
 }
