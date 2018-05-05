@@ -17,7 +17,7 @@
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <rowConstraints>
           <RowConstraints maxHeight="29.0" minHeight="30.0" prefHeight="29.0" vgrow="SOMETIMES" />
-          <RowConstraints maxHeight="50.0" minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="40.0" vgrow="SOMETIMES" />
           <RowConstraints maxHeight="99999" minHeight="89.0" prefHeight="100.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
@@ -35,36 +35,46 @@
                 </Menu>
               </menus>
             </MenuBar>
-            <TabPane id="jfx-tab-pane" fx:id="tabConnects" maxHeight="99999.0" maxWidth="99999.0" prefHeight="156.0" prefWidth="1011.0" styleClass="jfx-tab-pane" stylesheets="@styling.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="300.0" tabMinHeight="50.0" tabMinWidth="10.0" GridPane.rowIndex="2">
+            <TabPane id="jfx-tab-pane" fx:id="tabConnects" maxHeight="99999.0" maxWidth="99999.0" prefHeight="156.0" prefWidth="1011.0" style="-fx-background-color: #B5BAB7;" styleClass="jfx-tab-pane" stylesheets="@styling.css" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="50.0" tabMaxWidth="300.0" tabMinHeight="50.0" tabMinWidth="10.0" GridPane.rowIndex="2">
                <tabs>
-                  <Tab />
+                  <Tab id="tab" />
                </tabs>
             </TabPane>
-            <Button id="button_new_connect" fx:id="buttonConnect" alignment="CENTER" contentDisplay="CENTER" maxWidth="60" minHeight="50.0" minWidth="60" mnemonicParsing="false" onAction="#onButtonConnect" prefWidth="60.0" styleClass="button_new_connect" stylesheets="@styling.css" textAlignment="CENTER" GridPane.rowIndex="1" />
-            <Button id="button_delete_connect" fx:id="buttonDisconnect" alignment="CENTER" maxHeight="50.0" maxWidth="60.0" minHeight="50.0" minWidth="60.0" mnemonicParsing="false" onAction="#onButtonDisconnect" prefHeight="50.0" prefWidth="60.0" styleClass="button_delete_connect" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button id="button_new_connect" fx:id="buttonConnect" alignment="CENTER" contentDisplay="CENTER" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#onButtonConnect" prefHeight="40.0" prefWidth="40.0" styleClass="button_new_connect" stylesheets="@styling.css" textAlignment="CENTER" GridPane.rowIndex="1" />
+            <Button id="button_delete_connect" fx:id="buttonDisconnect" alignment="CENTER" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#onButtonDisconnect" prefHeight="40.0" prefWidth="40.0" styleClass="button_delete_connect" textAlignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="60.0" />
+                  <Insets left="40.0" />
                </GridPane.margin>
             </Button>
-            <Button id="button_flush_connect" fx:id="buttonFlush" alignment="CENTER" maxHeight="50.0" maxWidth="60.0" minHeight="50.0" minWidth="60.0" mnemonicParsing="false" onAction="#onButtonFlush" prefHeight="50.0" prefWidth="60.0" styleClass="button_flush_connect" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button id="button_flush_connect" fx:id="buttonFlush" alignment="CENTER" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#onButtonFlush" prefHeight="40.0" prefWidth="40.0" styleClass="button_flush_connect" textAlignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="140.0" />
+                  <Insets left="80.0" />
                </GridPane.margin>
             </Button>
-            <Button id="button_settings_connect" fx:id="buttonSettings" alignment="CENTER" layoutX="130.0" layoutY="40.0" maxHeight="50.0" maxWidth="60.0" minHeight="50.0" minWidth="60.0" mnemonicParsing="false" onAction="#onButtonSettings" prefHeight="50.0" prefWidth="60.0" styleClass="button_settings_connect" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button id="button_settings_connect" fx:id="buttonSettings" alignment="CENTER" layoutX="130.0" layoutY="40.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#onButtonSettings" prefHeight="40.0" prefWidth="40.0" styleClass="button_settings_connect" textAlignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="120.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="buttonSelectBinMode" alignment="CENTER" layoutX="130.0" layoutY="40.0" maxHeight="40.0" maxWidth="40.0" minHeight="40.0" minWidth="40.0" mnemonicParsing="false" onAction="#onButtonSelectBinMode" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #9AD79E;" text="BIN" textAlignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="200.0" />
                </GridPane.margin>
             </Button>
-            <Button id="button_pause" fx:id="buttonStart" alignment="CENTER" layoutY="40.0" maxHeight="50.0" maxWidth="60.0" minHeight="50.0" minWidth="60.0" mnemonicParsing="false" onAction="#onButtonStopStart" prefHeight="50.0" prefWidth="60.0" styleClass="button_play" stylesheets="@styling.css" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="buttonSelectAsciMode" alignment="CENTER" layoutX="210.0" layoutY="40.0" maxHeight="40.0" maxWidth="45.0" minHeight="40.0" minWidth="45.0" mnemonicParsing="false" onAction="#onButtonSelectAsciMode" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #ADC4D7;" text="ASCI" textAlignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="260.0" />
+                  <Insets left="240.0" />
                </GridPane.margin>
             </Button>
-            <Button id="button_pause" fx:id="buttonStop" alignment="CENTER" maxHeight="50.0" maxWidth="60.0" minHeight="50.0" minWidth="60.0" mnemonicParsing="false" onAction="#onButtonStopStart" prefHeight="50.0" prefWidth="60.0" styleClass="button_pause" stylesheets="@styling.css" textAlignment="CENTER" GridPane.rowIndex="1">
+            <Button fx:id="buttonResumeSerial" alignment="CENTER" layoutX="250.0" layoutY="40.0" maxHeight="40.0" maxWidth="50.0" minHeight="40.0" minWidth="45.0" mnemonicParsing="false" onAction="#onButtonResumeSerial" prefHeight="40.0" prefWidth="50.0" style="-fx-background-color: #ADC000;" text="START" textAlignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="320.0" />
+                  <Insets left="300.0" />
                </GridPane.margin></Button>
+            <Button fx:id="buttonPauseSerial" alignment="CENTER" layoutX="310.0" layoutY="40.0" maxHeight="40.0" maxWidth="45.0" minHeight="40.0" minWidth="45.0" mnemonicParsing="false" onAction="#onButtonPauseSerial" prefHeight="40.0" prefWidth="45.0" style="-fx-background-color: #FFC000;" text="STOP" textAlignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="350.0" />
+               </GridPane.margin>
+            </Button>
          </children>
          <columnConstraints>
             <ColumnConstraints />

@@ -1,0 +1,28 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="Terminal_Java">
+    <output-path>$PROJECT_DIR$/out/artifacts/Terminal_Java</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="Main" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="nativeBundle" value="all" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+        <option name="version" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="library" level="project" name="org.everit.osgi.bundles:org.everit.osgi.bundles.org.scream3r.jssc:2.8.0" />
+      <element id="directory" name="images">
+        <element id="dir-copy" path="$PROJECT_DIR$/view/images" />
+      </element>
+      <element id="archive" name="Terminal_Java.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="Terminal_Java" />
+      </element>
+    </root>
+  </artifact>
+</component>

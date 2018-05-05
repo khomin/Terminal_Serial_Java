@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="org.everit.osgi.bundles:org.everit.osgi.bundles.org.scream3r.jssc:2.8.0" type="repository">
+    <properties maven-id="org.everit.osgi.bundles:org.everit.osgi.bundles.org.scream3r.jssc:2.8.0" />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/org.everit.osgi.bundles.org.scream3r.jssc-2.8.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

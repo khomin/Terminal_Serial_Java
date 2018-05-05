@@ -6,13 +6,13 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="vbox" maxHeight="99999.0" maxWidth="99999.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="424.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectionData">
+<VBox fx:id="vbox" maxHeight="99999.0" maxWidth="99999.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="309.0" prefWidth="438.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectionData">
    <children>
-      <TextArea maxHeight="99999.0" maxWidth="99999.0" prefHeight="9999.0" />
-      <HBox maxHeight="60.0" maxWidth="9999.0">
+      <TextArea fx:id="receiveData" maxHeight="99999.0" maxWidth="99999.0" prefHeight="9999.0" prefWidth="680.0" />
+      <HBox maxHeight="100.0" maxWidth="9999.0" prefHeight="0.0" prefWidth="724.0">
          <children>
-            <TextField maxHeight="96.0" maxWidth="99999.0" prefHeight="96.0" prefWidth="744.0" />
-            <Button id="button_send_packet" contentDisplay="CENTER" maxHeight="500.0" maxWidth="100.0" minWidth="100.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" styleClass="button_send_packet" stylesheets="@styling.css" />
+            <TextField fx:id="sendData" maxHeight="100.0" maxWidth="99999.0" prefHeight="99999.0" prefWidth="9999.0" />
+            <Button id="sendButton" fx:id="sendButton" contentDisplay="CENTER" maxHeight="500.0" maxWidth="100.0" minHeight="50.0" minWidth="100.0" mnemonicParsing="false" prefHeight="99999.0" prefWidth="100.0" styleClass="button_send_packet" stylesheets="@styling.css" />
          </children>
       </HBox>
    </children>

@@ -10,12 +10,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="215.0" prefWidth="298.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectionParameters">
+<AnchorPane maxHeight="250.0" maxWidth="331.0" minHeight="248.0" minWidth="310.0" prefHeight="248.0" prefWidth="331.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ConnectionParameters">
     <children>
-      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <GridPane maxWidth="220.0" minHeight="220.0" minWidth="220" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="100.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,18 +26,33 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-              <ComboBox fx:id="comPortList" prefWidth="150.0" GridPane.columnIndex="1" />
+              <ComboBox fx:id="comPortList" minWidth="100" prefHeight="25.0" prefWidth="999.0" GridPane.columnIndex="1" />
               <Label text="COM" />
             <Label layoutX="10.0" layoutY="17.0" text="Baudrate" GridPane.rowIndex="4" />
             <Label layoutX="10.0" layoutY="47.0" text="Parity" GridPane.rowIndex="2" />
             <Label layoutX="10.0" layoutY="77.0" text="StopBit" GridPane.rowIndex="3" />
-            <Label layoutX="10.0" layoutY="107.0" text="HeaderPort" GridPane.rowIndex="1" />
-            <TextField fx:id="comPortHeader" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ComboBox fx:id="comPortParity" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-              <Button fx:id="buttonAccept" contentDisplay="TOP" mnemonicParsing="false" onAction="#onAccept" prefHeight="50.0" prefWidth="200.0" styleClass="button_accept" stylesheets="@styling.css" text="Accept" GridPane.rowIndex="5" />
-              <Button fx:id="buttonExit" mnemonicParsing="false" onAction="#onExit" prefHeight="50.0" prefWidth="200.0" styleClass="button_exit" stylesheets="@styling.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <ComboBox fx:id="comPortStopBit" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <ComboBox fx:id="comPortBaudrate" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label layoutX="10.0" layoutY="107.0" text="HeaderPort" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Label>
+            <TextField fx:id="comPortHeader" prefWidth="9999.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="comPortParity" prefWidth="9999.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+              <Button fx:id="buttonAccept" cache="true" contentDisplay="TOP" mnemonicParsing="false" onAction="#onAccept" prefHeight="50.0" prefWidth="9999.0" style="-fx-background-color: #8BB6F4; -fx-background-radius: 7px; -fx-text-fill: WHITE;" styleClass="button_accept" stylesheets="@styling.css" text="Accept" GridPane.rowIndex="5">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <GridPane.margin>
+                  <Insets right="1.0" />
+               </GridPane.margin></Button>
+              <Button fx:id="buttonExit" mnemonicParsing="false" onAction="#onExit" prefHeight="50.0" prefWidth="9999.0" style="-fx-background-color: #8BB6F4; -fx-background-radius: 7px; -fx-text-fill: WHITE;" styleClass="button_exit" stylesheets="@styling.css" text="Exit" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets left="1.0" />
+               </GridPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+            <ComboBox fx:id="comPortStopBit" prefWidth="9999.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <ComboBox fx:id="comPortBaudrate" minWidth="100" prefWidth="9999.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />

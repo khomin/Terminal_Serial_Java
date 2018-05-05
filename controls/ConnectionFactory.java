@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import jssc.SerialPort;
@@ -16,9 +17,8 @@ import java.util.ArrayList;
 
 public class ConnectionFactory {
     private ConnectionParameters connectionParameters = null;
-
     private ArrayList<Connection> connectionArray = new ArrayList<>();
-    private ArrayList<StringProperty>tabStyleProperty = new ArrayList<>();
+    private ArrayList<ConnectionDataAnimationStyle> connectionDataAnimationStyles = new ArrayList<>();
     BooleanProperty connAvailableDisconnect = new SimpleBooleanProperty(true);
     private IntegerProperty currIndex = new SimpleIntegerProperty(0);
     private IntegerProperty eventUpdate = new SimpleIntegerProperty(0);
@@ -29,9 +29,6 @@ public class ConnectionFactory {
     private boolean isFirstElement = false;
     private boolean lastOperationRemove = false;
     private boolean lastOperationInsert = false;
-    private String colorStypeConnected = "-fx-background-color: #d7efff";
-    private String colorStyleDisonnected = "-fx-background-color: #9e9c9e";
-    private String colorStyleDefault = colorStypeConnected;
 
     public ConnectionFactory() {
         try {
@@ -40,6 +37,11 @@ public class ConnectionFactory {
             fxmlParam.setLocation(getClass().getResource("connectionParameters.fxml"));
             sceneConnection = new Scene(fxmlParam.load());
             stageParam = new Stage();
+            stageParam.setMaxWidth(330);
+            stageParam.setMaxHeight(250);
+            stageParam.setMinWidth(330);
+            stageParam.setMinHeight(250);
+            stageParam.getIcons().add(new Image(getClass().getResourceAsStream("icon.png")));
             stageParam.setScene(sceneConnection);
             parameters = (ConnectionParameters)fxmlParam.getController();
             stageParam.initModality(Modality.APPLICATION_MODAL);
@@ -69,13 +71,7 @@ public class ConnectionFactory {
                 lastOperationInsert = true;
                 lastOperationRemove = false;
                 connectionArray.add(connection);
-                //-- tab style
-                if(connection.getConnectionEstab().get()) {
-                    tabStyleProperty.add(new SimpleStringProperty(colorStypeConnected));
-                } else {
-                    tabStyleProperty.add(new SimpleStringProperty(colorStyleDisonnected));
-                }
-                //-- update index selected elemnt
+                //-- update index selected element
                 currIndex.setValue(currIndex.getValue()+1);
                 eventUpdate.setValue(eventUpdate.getValue()+1);
             }
@@ -83,9 +79,33 @@ public class ConnectionFactory {
         });
     }
 
+    public void addConnectionTabAnimation(int index, Tab tab) {
+        connectionArray.get(index).setConnectionAnimation(tab);
+    }
+
+    public void settingsConnectionEdit(int index) {
+        stageParam.show();
+        stageParam.setOnHidden(event -> {
+            if(parameters.getPortIsSelected()) {
+
+                if(connectionArray.get(index).isPortOpen()) {
+                    connectionArray.get(index).closePort();
+                }
+
+                Connection connection = new Connection(
+                        parameters.getParamPortName(),
+                        parameters.getParamPortStopBit(),
+                        parameters.getParamPortParity(),
+                        parameters.getParamPortBaudrate()
+                );
+                connectionArray.set(index, connection);
+            }
+            connAvailableDisconnect.set(connectionArray.isEmpty());
+        });
+    }
+
     public void removeConnection(int index) {
         connectionArray.remove(index);
-        tabStyleProperty.remove(index);
         if(connectionArray.isEmpty()) {
             isFirstElement = true;
         } else {
@@ -115,27 +135,36 @@ public class ConnectionFactory {
         return lastOperationRemove;
     }
 
-    public StringProperty getStyleProperty(int index) {
-        return tabStyleProperty.get(index);
+    public Connection getConnectionItem(int index) {
+        if(!connectionArray.isEmpty()) {
+            return connectionArray.get(index);
+        } else {
+            return  null;
+        }
     }
 
-    public Connection getConnectionItem(int index) {
-        if(index >=0) {
-            if(!connectionArray.isEmpty()) {
-                return connectionArray.get(index);
-            } else {
-                return  null;
-            }
-        } else {
-            return null;
-        }
+    public void flushConnectionData(int index) {
+        connectionArray.get(index).flushConnectionData();
+    }
+
+    public void setDataBinMode(int index) {
+        getConnectionItem(index).getDataModeIsAscii().set(false);
+    }
+
+    public void setDataAsciiMode(int index) {
+        getConnectionItem(index).getDataModeIsAscii().set(true);
+    }
+
+    public void setResumeSerialMode(int index) {
+        getConnectionItem(index).getDataIsRunMode().set(true);
+    }
+
+    public void setPauseSerialMode(int index) {
+        getConnectionItem(index).getDataIsRunMode().set(false);
     }
 
     public int getCurrentConnetionIndex() {
         return currIndex.get();
-    }
-    public void setCurrentConnetionIndex(int index) {
-        currIndex.setValue(index);
     }
 
     public int getSize() {
@@ -143,49 +172,10 @@ public class ConnectionFactory {
     }
 
     public String getColorStypeConnected() {
-        return colorStypeConnected;
+        return null;
     }
 
-    public String getColorStyleDisonnected() {
-        return colorStyleDisonnected;
-    }
     public String getColorStyleDefault() {
-        return colorStyleDefault;
+        return null;
     }
 }
-
-
-//    private ConnectionParameters connectionParam;
-//    FXMLLoader fxmlConnectionParam = new FXMLLoader();
-//    Stage stageConnectionParam = new Stage();
-
-//    boolean isFirstConnetion = false;
-
-//    @FXML
-//    public void initialize() {
-//        try {
-////            FXMLLoader fxmlConnectionFactory = new FXMLLoader();
-////            Stage stageConnectionFactory = new Stage();
-////            //-- ConnectionFactory
-////            fxmlConnectionFactory.setLocation(getClass().getResource("connectionParameters.fxml"));
-////            Scene sceneConnection = new Scene(fxmlConnectionFactory.load());
-////            stageConnectionParam.setScene(sceneConnection);
-////            connectionParam = (ConnectionParameters)fxmlConnectionParam.getController();
-////            stageConnectionParam.initModality(Modality.APPLICATION_MODAL);
-////            stageConnectionParam.setTitle("Connection");
-//        } catch (IOException ex) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-//            alert.setTitle("Error");
-//            alert.setHeaderText(null);
-//            alert.setContentText("Error opening port @" + ex.toString());
-//            alert.showAndWait();
-//            System.err.print(ex);
-//        }
-//        initData();
-//        tableView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-//        tableView.getSelectionModel().setCellSelectionEnabled(true);
-//        tableDateTime.setCellValueFactory(new PropertyValueFactory<ConnectionData, String>("DateTime"));
-//        tableDataPackets.setCellValueFactory(new PropertyValueFactory<ConnectionData, String>("DataPackets"));
-//        // заполняем таблицу данными
-//        tableView.setItems(connectionData);
-//    }
