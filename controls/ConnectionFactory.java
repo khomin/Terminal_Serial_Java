@@ -88,18 +88,10 @@ public class ConnectionFactory {
         stageParam.show();
         stageParam.setOnHidden(event -> {
             if(parameters.getPortIsSelected()) {
-
-                if(connectionArray.get(index).isPortOpen()) {
-                    connectionArray.get(index).closePort();
-                }
-                Connection connection = new Connection(
-                        parameters.getParamPortName(),
-                        parameters.getHeaderName(),
+                connectionArray.get(index).setParamComPort(
+                        parameters.getParamPortBaudrate(),
                         parameters.getParamPortStopBit(),
-                        parameters.getParamPortParity(),
-                        parameters.getParamPortBaudrate()
-                );
-                connectionArray.set(index, connection);
+                        parameters.getParamPortParity());
             }
             connAvailableDisconnect.set(connectionArray.isEmpty());
         });

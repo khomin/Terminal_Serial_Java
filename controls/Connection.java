@@ -146,6 +146,14 @@ public class Connection {
         connectionAnimation = new ConnectionDataAnimationStyle(tab);
     }
 
+    public void setParamComPort(int baudRate, int stopBits, int parity) {
+        try {
+            comPort.setParams(baudRate, 8, stopBits, parity);
+        } catch (SerialPortException ex) {
+            System.err.print(ex);
+        }
+    }
+
     public void flushConnectionData() {
         connectionData.clearReceiveData();
     }

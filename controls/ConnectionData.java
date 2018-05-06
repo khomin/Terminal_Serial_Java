@@ -47,13 +47,7 @@ public class ConnectionData {
             @Override
             public Void call() throws Exception {
                 Platform.runLater(() -> new MessageConsumer(rxDataQueue, receiveData, rxDataQueue.size()).start());
-                while(true) {
-                    if(rxDataQueue.size() != 0) {
-                        rxDataQueue.put(rxDataQueue.take().toString());
-                        rxDataQueue.remove(0);
-                    }
-                    Thread.sleep(100);
-                }
+                return null;
             }
         };
         new Thread(task).start();
