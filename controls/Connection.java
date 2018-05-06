@@ -50,6 +50,7 @@ public class Connection {
     private Stage stageConnectionData = new Stage();
 
     public Connection(String portName,
+                            String header,
                             int portStopBits,
                             int portParity,
                             int portBaudrate) {
@@ -57,7 +58,7 @@ public class Connection {
         this.portStopBit = portStopBits;
         this.portParity = portParity;
         this.portBaudrate = portBaudrate;
-        this.header.set(portName);
+        this.header.set(header);
 
         if(openPort()) {
             int mask = SerialPort.MASK_RXCHAR;

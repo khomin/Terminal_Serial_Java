@@ -95,6 +95,10 @@ public class ConnectionParameters {
         return Integer.parseInt(comPortBaudrate.getSelectionModel().getSelectedItem().toString());
     }
 
+    public String getHeaderName() {
+        return comPortHeader.textProperty().getValue().toString();
+    }
+
     public boolean getPortIsSelected() {
         return portIsSelected;
     }

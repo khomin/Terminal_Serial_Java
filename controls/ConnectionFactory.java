@@ -58,10 +58,11 @@ public class ConnectionFactory {
             //-- if port is selected and ckicked button 'accept'
             if(parameters.getPortIsSelected()) {
                 Connection connection = new Connection(
-                            parameters.getParamPortName(),
-                            parameters.getParamPortStopBit(),
-                            parameters.getParamPortParity(),
-                            parameters.getParamPortBaudrate()
+                        parameters.getParamPortName(),
+                        parameters.getHeaderName(),
+                        parameters.getParamPortStopBit(),
+                        parameters.getParamPortParity(),
+                        parameters.getParamPortBaudrate()
                     );
                 if(connectionArray.isEmpty()) {
                     isFirstElement = true;
@@ -91,9 +92,9 @@ public class ConnectionFactory {
                 if(connectionArray.get(index).isPortOpen()) {
                     connectionArray.get(index).closePort();
                 }
-
                 Connection connection = new Connection(
                         parameters.getParamPortName(),
+                        parameters.getHeaderName(),
                         parameters.getParamPortStopBit(),
                         parameters.getParamPortParity(),
                         parameters.getParamPortBaudrate()
